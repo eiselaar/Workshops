@@ -31,51 +31,50 @@ const coursePost = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-/*const courseGet = (req, res) => {
+const courseGet = (req, res) => {
   // if an specific teacher is required
-  if (req.query && req.query.id) {
-    Course.findById(req.query.id).populate('teacher')
-      .then( (course) => {
-        res.json(course);
-      })
-      .catch(err => {
-        res.status(404);
-        console.log('error while queryting the course', err)
-        res.json({ error: "Course doesnt exist" })
-      });
-  } else {
-    // get all teachers
-    Course.find().populate('teacher')
-      .then( courses => {
+
+  if (req.query && req.query.name) {
+
+    const { name, sort } = req.query;
+    
+    const query = Course.find();
+
+    if (name) {
+      query.where({ name: { $regex: name, $options: "i" } });
+    }
+
+    if (sort === "asc") {
+      query.sort({ name: 1 });
+    } else if (sort === "desc") {
+      query.sort({ name: -1 });
+    }
+
+    query.populate('teacher')
+      .then(courses => {
         res.json(courses);
       })
       .catch(err => {
         res.status(422);
         res.json({ "error": err });
       });
-  }
-};*/
+  
 
-const courseGet = async (req, res) => {
-  try {
-    const { name, sort } = req.query;
-    let filter = {};
-    let sortOrder = {};
+  } else {
+    Course.find().populate('teacher')
+    .then((course) => {
+      res.json(course);
+    })
+    .catch(err => {
+      res.status(404);
+      console.log('error while queryting the course', err)
+      res.json({ error: "Course doesnt exist" })
+    });
 
-    if (name) {
-      filter.name = new RegExp(name, 'i'); // case-insensitive regex search
-    }
+   
+  } }
+;
 
-    if (sort) {
-      sortOrder.name = sort === 'asc' ? 1 : -1; // sort by name
-    }
-
-    const courses = await Course.find(filter).sort(sortOrder);
-    res.status(200).json(courses);
-  } catch (err) {
-    res.status(500).json({ error: 'There was an error retrieving the courses' });
-  }
-};
 
 
 module.exports = {
