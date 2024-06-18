@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllTeachers, deleteTeacher } from '../services/teacherService';
-
+//
 const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
 

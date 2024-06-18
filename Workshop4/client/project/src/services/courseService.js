@@ -7,3 +7,4 @@ export const getAllCoursesSort  = (name, sort)  => axios.get(`${API_URL}?name=${
 export const getCourseById = (id) => axios.get(`${API_URL}?id=${id}`);
 export const createCourse = (course) => axios.post(API_URL, course);
 export const deleteCourse = (id) => axios.delete(`${API_URL}?id=${id}`); // Asegúrate de tener esta línea
+//

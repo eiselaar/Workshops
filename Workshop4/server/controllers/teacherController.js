@@ -1,5 +1,5 @@
 const Teacher = require("../models/teacherModel");
-
+//
 /**
  * Creates a teacher
  *

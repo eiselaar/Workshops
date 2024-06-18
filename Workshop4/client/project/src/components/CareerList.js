@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCareers, deleteCareer } from '../services/careerService';
-
+//
 const CareerList = () => {
   const [careers, setCareers] = useState([]);
 

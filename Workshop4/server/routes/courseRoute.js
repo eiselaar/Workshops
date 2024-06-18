@@ -1,6 +1,6 @@
 const app = require('express');
 const courseRouter = app.Router();
-
+//
 const {
     coursePost, courseGet, courseDelete,
   } = require("../controllers/courseController.js");

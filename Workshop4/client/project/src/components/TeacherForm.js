@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createTeacher } from '../services/teacherService';
 import { getAllTeachers, deleteTeacher } from '../services/teacherService';
 import { useEffect } from 'react';
-
+//
 const TeacherForm = () => {
   const [teacher, setTeacher] = useState({
     first_name: '',

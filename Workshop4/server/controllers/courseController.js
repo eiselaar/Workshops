@@ -1,5 +1,5 @@
 const Course = require("../models/courseModel");
-
+//
 /**
  * Creates a course
  *

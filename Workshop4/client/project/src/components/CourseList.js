@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCourses, deleteCourse } from '../services/courseService';
-
+//
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
 
